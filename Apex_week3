@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>😂 Unique Emoji Joke Generator</title>
+  <style>
+    :root {
+      --primary: #ff40a1;
+      --primary-hover: #e02385;
+      --light-text: #222;
+      --dark-text: #f5f5f5;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: var(--light-text);
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(120deg, #ffd3e0, #bae6ff, #d0ffef, #ffebba, #ffe2f2);
+      background-size: 500% 500%;
+      animation: uniqueFlow 18s ease-in-out infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s, color 0.3s;
+      position: relative;
+    }
+
+    @keyframes uniqueFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .dark {
+      background: linear-gradient(120deg, #1b1b3a, #2b2b4f, #1f1f2e);
+      color: var(--dark-text);
+    }
+
+    /* Emojis floating */
+    .emoji {
+      position: absolute;
+      font-size: 3rem;
+      animation: floatEmoji 22s linear infinite;
+      opacity: 0.9;
+      user-select: none;
+      pointer-events: none;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    @keyframes floatEmoji {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-120vh) rotate(360deg); }
+    }
+
+    .emoji:nth-child(1)  { left: 5%;  animation-delay: 0s; }
+    .emoji:nth-child(2)  { left: 15%; animation-delay: 4s; }
+    .emoji:nth-child(3)  { left: 25%; animation-delay: 2s; }
+    .emoji:nth-child(4)  { left: 35%; animation-delay: 6s; }
+    .emoji:nth-child(5)  { left: 45%; animation-delay: 1s; }
+    .emoji:nth-child(6)  { left: 55%; animation-delay: 3s; }
+    .emoji:nth-child(7)  { left: 65%; animation-delay: 5s; }
+    .emoji:nth-child(8)  { left: 75%; animation-delay: 2.5s; }
+    .emoji:nth-child(9)  { left: 85%; animation-delay: 6.5s; }
+    .emoji:nth-child(10) { left: 95%; animation-delay: 8s; }
+
+    /* Joke Box */
+    .joke-box {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+      backdrop-filter: blur(8px);
+    }
+
+    .dark .joke-box {
+      background: rgba(30, 30, 30, 0.9);
+    }
+
+    .joke-box h1 {
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-size: 30px;
+    }
+
+    .joke-text {
+      font-size: 22px;
+      margin: 20px 0;
+      min-height: 60px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .visible {
+      opacity: 1;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px 5px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: var(--primary-hover);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .joke-text {
+        font-size: 18px;
+      }
+      .emoji {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Emojis -->
+  <div class="emoji">😂</div>
+  <div class="emoji">🤣</div>
+  <div class="emoji">😍</div>
+  <div class="emoji">😜</div>
+  <div class="emoji">😆</div>
+  <div class="emoji">🤣</div>
+  <div class="emoji">😂</div>
+  <div class="emoji">😹</div>
+  <div class="emoji">🙃</div>
+  <div class="emoji">😄</div>
+
+  <!-- Joke Generator -->
+  <div class="joke-box">
+    <h1>😂 Joke Generator</h1>
+    <div class="joke-text" id="joke">Click the button to get a joke!</div>
+    <div>
+      <button onclick="getJoke()">Get Joke</button>
+      <button onclick="copyJoke()">Copy</button>
+      <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+  </div>
+
+  <script>
+    const jokeDiv = document.getElementById('joke');
+    const body = document.body;
+
+    async function getJoke() {
+      jokeDiv.classList.remove('visible');
+      jokeDiv.textContent = "Loading...";
+
+      try {
+        const res = await fetch("https://official-joke-api.appspot.com/jokes/random");
+        const data = await res.json();
+        const joke = `${data.setup} 😄 ${data.punchline}`;
+
+        setTimeout(() => {
+          jokeDiv.textContent = joke;
+          jokeDiv.classList.add('visible');
+          saveJokeToHistory(joke);
+        }, 400);
+      } catch (err) {
+        jokeDiv.textContent = "Oops! Couldn't fetch a joke.";
+        console.error(err);
+      }
+    }
+
+    function copyJoke() {
+      navigator.clipboard.writeText(jokeDiv.textContent).then(() => {
+        alert("Joke copied to clipboard!");
+      });
+    }
+
+    function toggleDarkMode() {
+      body.classList.toggle('dark');
+    }
+
+    function saveJokeToHistory(joke) {
+      let jokes = JSON.parse(localStorage.getItem("jokeHistory")) || [];
+      jokes.push(joke);
+      if (jokes.length > 10) jokes.shift();
+      localStorage.setItem("jokeHistory", JSON.stringify(jokes));
+    }
+  </script>
+</body>
+</html>             
