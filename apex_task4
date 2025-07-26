@@ -1,0 +1,682 @@
+index:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .button-container {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(245, 235, 255, 0.8));
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .task-button {
+      padding: 14px 28px;
+      font-size: 20px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(to right, #e1bee7, #f3e5f5);
+      color: #4a148c;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .task-button:hover {
+      background: linear-gradient(to right, #d1c4e9, #ede7f6);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <a href="C:\Users\BHAVANA\apex4(1).html" class="task-button">Portfolio page</a>
+    <a href="C:\Users\BHAVANA\apex4(2).html" class="task-button">Daily Planner (To-Do list)</a>
+    <a href="C:\Users\BHAVANA\apex4(3).html" class="task-button">Product Market page</a>
+  </div>
+</body>
+</html>
+
+
+personal Portfolio:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhavsss' Portfolio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(120deg, #f0f2f5, #e3e9f2);
+      color: #222;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: url('https://www.transparenttextures.com/patterns/diagmonds-light.png');
+      opacity: 0.2;
+      z-index: -1;
+      animation: fadePattern 30s infinite alternate;
+    }
+    header {
+      background: #2d3e50;
+      padding: 1rem 2rem;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #66d9ef;
+    }
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: linear-gradient(to bottom right, #4b6cb7, #182848);
+      color: white;
+      animation: fadeIn 2s ease-in;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: #2d3e50;
+    }
+    .about p, .contact p {
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+    .projects {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .project-card {
+      background: none;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      height: 250px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s, background-size 1s ease-in-out;
+      backdrop-filter: blur(6px);
+      animation: slideUp 1s ease forwards;
+    }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+    .project-card h3, .project-card p {
+      z-index: 1;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      background-size: 110%;
+    }
+    .project1 {
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80');
+    }
+    .project2 {
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+    }
+    .project3 {
+      background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80');
+    }
+    footer {
+      background: #2d3e50;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadePattern {
+      0% { opacity: 0.2; }
+      100% { opacity: 0.3; }
+    }
+    @keyframes slideUp {
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Hi, I'm Bhavsss</h1>
+    <p>A passionate Computer Science student and aspiring Web Developer</p>
+  </section>
+
+  <section id="about" class="about">
+    <h2 class="section-title">About Me</h2>
+    <p>I am currently pursuing B.Tech in Computer Science and Engineering at VFSTR. I enjoy building responsive websites and learning new technologies. I aim to contribute to impactful projects in the tech world.</p>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">My Projects</h2>
+    <div class="projects">
+      <div class="project-card project1">
+        <h3>Tourism Website</h3>
+        <p>Interactive travel guide with maps, sorting, and themes built using HTML, CSS, and JavaScript.</p>
+      </div>
+      <div class="project-card project2">
+        <h3>Smart Traffic Controller</h3>
+        <p>AI-powered traffic light system using multi-agent reinforcement learning to reduce congestion.</p>
+      </div>
+      <div class="project-card project3">
+        <h3>To-Do App</h3>
+        <p>Task manager using local storage with a clean and modern interface.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <p>You can reach me at <strong>bhavanap@example.com</strong> or connect via <strong>LinkedIn/GitHub</strong>.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Bhavsss | Designed with ❤️</p>
+  </footer>
+</body>
+</html>
+
+
+to do list (daily rotinue):
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elegant Daily Planner</title>
+  <style>
+    /* Background setup */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px 0;
+      background: rgba(0, 0, 0, 0.6);
+      color: #f0f0f0;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      font-size: 16px;
+      font-weight: normal;
+      margin-top: auto;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 10px;
+    }
+
+    .planner {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      animation: fadeIn 1s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #6a1b9a;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #6a1b9a;
+    }
+
+    button {
+      background-color: #6a1b9a;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-left: 5px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #4a148c;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+      text-align: left;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    li {
+      background-color: #f3e5f5;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    li:hover {
+      transform: scale(1.02);
+    }
+
+    li small {
+      display: block;
+      color: #555;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>🌟 Welcome to Your Daily Planner 🌟</header>
+
+  <main>
+    <div class="planner">
+      <h1>🗓️ Plan Your Day</h1>
+      <input type="text" id="taskInput" placeholder="Enter your task" />
+      <button onclick="addTask()">Add Task</button>
+      <ul id="taskList"></ul>
+    </div>
+  </main>
+
+  <footer>© 2025 Daily Planner | Designed with ❤️ by Bhavana Parupalli</footer>
+
+  <script>
+    function addTask() {
+      const taskInput = document.getElementById("taskInput");
+      const taskText = taskInput.value.trim();
+      if (taskText === "") {
+        alert("Please enter a task.");
+        return;
+      }
+
+      const now = new Date();
+      const dateTime = now.toLocaleString();
+
+      const taskList = document.getElementById("taskList");
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `<strong>${taskText}</strong><br><small>${dateTime}</small>`;
+      taskList.appendChild(listItem);
+      taskInput.value = "";
+    }
+  </script>
+</body>
+</html>
+
+
+marketing products:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bhavsss’ Product Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f0f4ff, #f9fcff);
+      color: #333;
+    }
+    header {
+      background: #0051a2;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    header span {
+      font-size: 1rem;
+      font-weight: 400;
+      display: block;
+      margin-top: 0.5rem;
+      opacity: 0.9;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      padding: 0 1rem;
+    }
+    select, input[type="text"] {
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      outline: none;
+      min-width: 200px;
+      background-color: white;
+      transition: box-shadow 0.3s;
+    }
+    input[type="text"]:focus,
+    select:focus {
+      box-shadow: 0 0 0 3px rgba(0, 81, 162, 0.2);
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .product {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .product:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    }
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .product-content {
+      padding: 1rem;
+      text-align: center;
+    }
+    .product h3 {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #222;
+    }
+    .product p {
+      font-size: 0.95rem;
+      margin: 0.2rem 0;
+      color: #555;
+    }
+    .badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: #0051a2;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .actions {
+      display: flex;
+      justify-content: space-around;
+      padding: 0.7rem;
+      border-top: 1px solid #eee;
+    }
+    .actions button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: transform 0.2s;
+    }
+    .actions button:hover {
+      transform: scale(1.1);
+    }
+    .actions button.heart.liked {
+      color: red;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #888;
+      background: #f0f0f0;
+    }
+    @media (max-width: 480px) {
+      header {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🛍 Bhavsss’ Product Page
+    <span>Smart. Sleek. Ready for Review ✨</span>
+  </header>
+
+  <div class="controls">
+    <input type="text" id="searchBar" placeholder="🔍 Search products..." />
+    <select id="categoryFilter">
+      <option value="all">All Categories</option>
+      <option value="Electronics">Electronics</option>
+      <option value="Fashion">Fashion</option>
+      <option value="Home">Home</option>
+      <option value="Books">Books</option>
+    </select>
+    <select id="sortBy">
+      <option value="price">Sort by Price</option>
+      <option value="name">Sort by Name</option>
+    </select>
+  </div>
+
+  <div class="products" id="productList"></div>
+
+  <footer>© 2025 Bhavsss | Designed for Internship Showcase 🚀</footer>
+
+  <script>
+    const products = [
+      { name: "Smartphone X", category: "Electronics", price: 699, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkVgpcyiGkHTqRe_fcjR0GCJAz9e8JpKgjYA&s" },
+      { name: "Fashion Shoes", category: "Fashion", price: 89, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuNygR843-JY8JarSPWSQOQ0NxkOqggWfgNw&s" },
+      { name: "Coffee Table Book", category: "Books", price: 39, image: "https://m.media-amazon.com/images/I/91OINeHnJGL._AC_UF1000,1000_QL80_.jpg" },
+      { name: "LED TV 42\"", category: "Electronics", price: 499, image: "https://m.media-amazon.com/images/I/71vZypjNkPS._AC_UF1000,1000_QL80_.jpg" },
+      { name: "Designer Bag", category: "Fashion", price: 199, image: "https://images-cdn.ubuy.co.in/6548d0822a5a215f080a8194-color-block-crossbody-bags-for-women.jpg" },
+      { name: "Wall Painting", category: "Home", price: 149, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyso3dDmz09NBVAxmKSU3zqvuicF0iuPKR2g&s" },
+      { name: "Wireless Earbuds", category: "Electronics", price: 59, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSds0FxQOhC7nJWWQJqxDBhYi8JFxVfR0gQdw&s" },
+      { name: "Modern Lamp", category: "Home", price: 89, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1OhK5Hu8_RJDyU8Fcx7mjumcOWS4mjdD4Tw&s" },
+      { name: "Cookbook 2023", category: "Books", price: 55, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ZnT0wIWRJyYp9WR-MpmqdoZcNrvlub71tg&s" },
+      { name: "Bluetooth Speaker", category: "Electronics", price: 120, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsU9xgSPQ63l8m_Mk0DKkgYR_FnUtLBZL0pg&s" }
+    ];
+
+    const productList = document.getElementById("productList");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const sortBy = document.getElementById("sortBy");
+    const searchBar = document.getElementById("searchBar");
+
+    function displayProducts(list) {
+      productList.innerHTML = "";
+      list.forEach((p, index) => {
+        const div = document.createElement("div");
+        div.className = "product";
+        div.innerHTML = `
+          <div class="badge">${p.category}</div>
+          <img src="${p.image}" alt="${p.name}" />
+          <div class="product-content">
+            <h3>${p.name}</h3>
+            <p><strong>Price:</strong> ₹${p.price}</p>
+          </div>
+          <div class="actions">
+            <button class="wishlist-btn" onclick="alert('Added to Wishlist: ${p.name}')">🌟 Wishlist</button>
+            <button class="cart-btn" onclick="alert('Added to Cart: ${p.name}')">🛒 Cart</button>
+            <button class="heart" onclick="toggleLike(this)">❤️</button>
+          </div>
+        `;
+        productList.appendChild(div);
+      });
+    }
+
+    function toggleLike(button) {
+      button.classList.toggle("liked");
+    }
+
+    function filterAndSort() {
+      let filtered = [...products];
+      const cat = categoryFilter.value;
+      const sort = sortBy.value;
+      const search = searchBar.value.toLowerCase();
+
+      if (cat !== "all") {
+        filtered = filtered.filter(p => p.category === cat);
+      }
+
+      if (search) {
+        filtered = filtered.filter(p => p.name.toLowerCase().includes(search));
+      }
+
+      if (sort === "price") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sort === "name") {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+      }
+
+      displayProducts(filtered);
+    }
+
+    categoryFilter.addEventListener("change", filterAndSort);
+    sortBy.addEventListener("change", filterAndSort);
+    searchBar.addEventListener("input", filterAndSort);
+
+    displayProducts(products);
+  </script>
+</body>
+</html>
